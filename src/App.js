@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import ShowList from './components/ShowList';
+import ShowDetails from './components/ShowDetails';
+import BookingForm from './components/BookingForm';
 
 function App() {
+  const [shows, setShows] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.tvmaze.com/search/shows?q=all');
+        const data = await response.json();
+        setShows(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<ShowList shows={shows} />} />
+          <Route path="/show/:id" element={<ShowDetails shows={shows} />} />
+          <Route path="/book-ticket/:id" element={<BookingForm shows={shows} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

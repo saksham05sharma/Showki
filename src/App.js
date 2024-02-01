@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import ShowList from './components/ShowList';
-import ShowDetails from './components/ShowDetails';
-import BookingForm from './components/BookingForm';
+import ShowList from './components/ShowList/ShowList';
+import ShowDetails from './components/ShowDetails/ShowDetails';
+import BookingForm from './components/BookingForm/BookingForm';
 import './App.css';
 
 function App() {

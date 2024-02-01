@@ -1,6 +1,3 @@
-/* styles.css */
-
-/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -14,13 +11,13 @@ body {
   padding: 20px;
 }
 
-/* Navigation */
+
 nav {
   background-color: #333;
   color: #fff;
-  padding: 10px 20px; /* Added padding to increase space on both sides */
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-between; /* Align Home button to the right */
+  justify-content: space-between;
 }
 
 nav ul {
@@ -35,11 +32,11 @@ nav ul li {
 }
 
 nav ul li:first-child {
-  margin-right: auto; /* Push Home button to the right */
+  margin-right: auto; 
 }
 
 nav ul li:last-child {
-  margin-right: 0; /* Remove margin from the last item */
+  margin-right: 0; 
 }
 
 nav ul li a {
@@ -52,7 +49,7 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* Show List */
+
 .show-card {
   background-color: #fff;
   border-radius: 5px;
@@ -73,8 +70,8 @@ nav ul li a:hover {
 .show-title {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 20px; /* Increased spacing between show names */
-  color: #000; /* Set TV show names color to black */
+  margin-bottom: 20px;
+  color: #000; 
 }
 
 .show-title a {
@@ -94,7 +91,7 @@ nav ul li a:hover {
 }
 
 .show-details a {
-  color: #555; /* Custom color for show details */
+  color: #555; 
   text-decoration: none;
 }
 

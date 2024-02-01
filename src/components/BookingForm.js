@@ -1,21 +1,31 @@
-// BookingForm.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const BookingForm = ({ shows }) => {
   const { id } = useParams();
   const show = shows.find(show => show.show.id === parseInt(id));
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    movieName: show.show.name,
+
+  // Load form data from local storage if available
+  const [formData, setFormData] = useState(() => {
+    const storedData = localStorage.getItem('bookingFormData');
+    return storedData ? JSON.parse(storedData) : {
+      name: '',
+      email: '',
+      phone: '',
+      movieName: show.show.name,
+    };
   });
+
+  // Store form data in local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('bookingFormData', JSON.stringify(formData));
+  }, [formData]);
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    // Clear form data after submission if needed
+    // setFormData({ name: '', email: '', phone: '', movieName: show.show.name });
   };
 
   const handleChange = e => {

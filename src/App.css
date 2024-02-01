@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+/* styles.css */
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navigation */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px; /* Added padding to increase space on both sides */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between; /* Align Home button to the right */
 }
 
-.App-link {
-  color: #61dafb;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li:first-child {
+  margin-right: auto; /* Push Home button to the right */
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Show List */
+.show-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.show-card img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.show-card-content {
+  padding: 20px;
+}
+
+.show-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px; /* Increased spacing between show names */
+  color: #000; /* Set TV show names color to black */
+}
+
+.show-title a {
+  text-decoration: none;
+}
+
+.show-title a:hover {
+  text-decoration: none;
+}
+
+.show-summary {
+  color: #555;
+}
+
+.show-details {
+  margin-top: 10px;
+}
+
+.show-details a {
+  color: #555; /* Custom color for show details */
+  text-decoration: none;
+}
+
+.show-details a:hover {
+  text-decoration: underline;
 }

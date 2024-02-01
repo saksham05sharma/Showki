@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ShowList from './components/ShowList';
 import ShowDetails from './components/ShowDetails';
 import BookingForm from './components/BookingForm';
+import './App.css';
 
 function App() {
   const [shows, setShows] = useState([]);

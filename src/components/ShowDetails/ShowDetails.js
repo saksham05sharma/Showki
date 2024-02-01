@@ -8,9 +8,14 @@ const ShowDetails = ({ shows }) => {
   return (
     <div>
       <h2>{show.show.name}</h2>
+      
+      {show.show.image && (
+        <img src={show.show.image.medium} alt={show.show.name} />
+      )}
+      
       <p>{show.show.type}</p>
       <p>{show.show.language}</p>
-      <p>{show.show.genres}</p>
+      <p>{show.show.genres.join(', ')}</p>
       <p>Premiered</p>
       <p>From : {show.show.premiered}</p>
       {show.show.ended !== null ? (
@@ -19,7 +24,7 @@ const ShowDetails = ({ shows }) => {
         <p>Till : null</p>
       )}
       <p>Rating : {show.show.rating.average}</p>
-      <p>{show.show.summary}</p>
+      <div dangerouslySetInnerHTML={{ __html: show.show.summary }} />
       <Link to={`/book-ticket/${id}`}>Book Movie Ticket</Link>
     </div>
   );

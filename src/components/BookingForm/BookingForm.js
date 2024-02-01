@@ -4,23 +4,30 @@ import './BookingForm.css';
 
 const BookingForm = ({ shows }) => {
   const { id } = useParams();
-  const show = shows.find(show => show.show.id === parseInt(id));
-
-  
+  const [show, setShow] = useState(shows.find(show => show.show.id === parseInt(id)));
   const [formData, setFormData] = useState(() => {
     const storedData = localStorage.getItem('bookingFormData');
+    const initialMovieName = show?.show?.name ?? "";
     return storedData ? JSON.parse(storedData) : {
       name: '',
       email: '',
       phone: '',
-      movieName: show.show.name,
+      movieName: initialMovieName,
     };
   });
 
-  
   useEffect(() => {
     localStorage.setItem('bookingFormData', JSON.stringify(formData));
   }, [formData]);
+
+  useEffect(() => {
+    setShow(shows.find(show => show.show.id === parseInt(id)));
+    // Update movie name in formData when show changes
+    setFormData(prevData => ({
+      ...prevData,
+      movieName: show?.show?.name ?? "",
+    }));
+  }, [shows, id]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -34,7 +41,7 @@ const BookingForm = ({ shows }) => {
   return (
     <div className="booking-card">
       <div className="booking-form">
-        <h2 className="title">Book Ticket for {show.show.name}</h2>
+        <h2 className="title">Book Ticket for {show?.show.name}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
@@ -50,11 +57,11 @@ const BookingForm = ({ shows }) => {
           </div>
           <div className="form-group">
             <label htmlFor="time">Ticket Booking Time:</label>
-            <input type="text" id="time" name="time" value={show.show.schedule.time} readOnly />
+            <input type="text" id="time" name="time" value={show?.show.schedule.time} readOnly />
           </div>
           <div className="form-group">
             <label htmlFor="date">Ticket Booking Date:</label>
-            <input type="text" id="date" name="date" value={show.show.schedule.days[0]} readOnly />
+            <input type="text" id="date" name="date" value={show?.show.schedule.days[0]} readOnly />
           </div>
           <button type="submit" className="book-ticket-button">Book Ticket</button>
         </form>
